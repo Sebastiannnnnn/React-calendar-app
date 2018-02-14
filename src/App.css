@@ -1,0 +1,211 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+* {box-sizing: border-box;}
+ul {list-style-type: none;}
+body {font-family: Verdana, sans-serif;}
+
+.day {
+    height: 100px;
+    border: 1px solid black;
+    position: relative;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+    background-color: white;
+    z-index: 1;
+    position: static;
+    overflow: hidden;
+    margin-top: -4px;
+}
+
+.day:first-child {
+    margin-left: 0;
+}
+
+.day:nth-child(-n+7) {
+    margin-top: 0;
+}
+
+.day-container {
+    overflow-y: auto;
+    height: 100%;
+}
+
+.day:hover {
+    position: relative;
+    transform: scale(1.25);
+    border: 1px solid black;
+    z-index: 2;
+}
+
+.day.prev,
+.day.next {
+    transform: none;
+}
+
+.day span {
+    padding-left: 6px;
+    font-size: 12px;
+    color: black;
+    clear: both;
+}
+
+.day.prev,
+.day.next {
+    background-color: #ddd;
+}
+
+.weekday {
+    position: relative;
+    line-height: 40px;
+    border: 1px solid black;
+    border-bottom: 0;
+    position: relative;
+}
+
+.weekday:first-child {
+    margin-left: -6px;
+}
+
+.weekday:nth-child(7) {
+    border-right: 1px solid black;
+}
+
+.weekday:first-child {
+    border-left: 1px solid black;
+}
+
+.month {
+    padding: 70px 25px;
+    width: 100%;
+    background: #1abc9c;
+    text-align: center;
+}
+
+.month ul {
+    margin: 0;
+    padding: 0;
+}
+
+.month ul li {
+    color: white;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.month .prev-arrow {
+    float: left;
+    padding-top: 10px;
+    padding-left: 4px;
+    font-size: 20px;
+}
+
+.month .next-arrow {
+    float: right;
+    padding-top: 10px;
+    padding-right: 4px;
+    font-size: 20px;
+}
+
+.weekdays {
+    margin: 0;
+    padding: 10px 0;
+    background-color: transparent;
+    position: relative;
+    left: 3px;
+}
+
+.weekdays li {
+    display: inline-block;
+    width: 14.28%;
+    color: #666;
+    text-align: center;
+    background-color: #ddd;
+}
+
+.days {
+    padding: 10px 0;
+    background: #eee;
+    margin: 0;
+}
+
+.days {
+    width: 100%;
+    background-color: transparent;
+    position: relative;
+}
+
+.days li, .days a {
+    list-style-type: none;
+    display: inline-block;
+    width: 14.28%;
+    text-align: left;
+    font-size: 12px;
+    color: #777;
+}
+
+.days a {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    top: -8px;
+    text-decoration: none;
+}
+
+.days a .entry {
+    margin-top: 16px;
+}
+
+.days a span {
+    top: 8px;
+    position: relative;
+}
+
+.entry {
+    color: black;
+    position: relative;
+    display: inline-block;
+    clear: both;
+    float: left;
+    width: 100%;
+    margin-top: 6px;
+    font-size: 10px;
+}
+
+.entry div:first-child {
+    border-top: 1px solid black;
+}
+
+.entry div {
+    border-bottom: 1px solid black;
+    padding: 0 6px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
