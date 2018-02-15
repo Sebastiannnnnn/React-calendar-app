@@ -13,6 +13,9 @@ class Calendar extends React.Component {
         this.state = {};
     }
 
+    /**
+     * @return {Object} prev month
+     */
     prev() {
         let date = this.props.match.params,
             month,
@@ -29,6 +32,9 @@ class Calendar extends React.Component {
         return {month, year};
     }
 
+    /**
+     * @return {Object} next month
+     */
     next() {
         let date = this.props.match.params,
             month,
@@ -45,10 +51,16 @@ class Calendar extends React.Component {
         return {month, year};
     }
 
+    /**
+     * @param {String} path
+     */
     setCalendar(date) {
         return '/calendar/' + date.month + '/' + date.year;
     }
 
+    /**
+     * @return {String} month and year
+     */
     printCalendarTime() {
         let calendarObj = this.props.match.params,
             date = new Date(calendarObj.year, calendarObj.month - 1, 1),
@@ -57,6 +69,9 @@ class Calendar extends React.Component {
         return text;
     }
 
+    /**
+     * @return {Array of Objects} calendar days
+     */
     createCalendar() {
         let calendarObj = this.props.match.params;
         let date = new Date(parseInt(calendarObj.year, 10), parseInt(calendarObj.month, 10), 0);
@@ -90,10 +105,18 @@ class Calendar extends React.Component {
         return days;
     }
 
+    /**
+     * @param  {Date}
+     * @return {Date}
+     */
     createNewDateObject(date) {
         return new Date(date.getFullYear(), date.getMonth(), date.getDate());
     }
 
+    /**
+     * @param  {Array of Objects}
+     * @return {Array of <li>'s}
+     */
     printWeekDays(days) {
         let array = [];
         for (var i = 0; i < 7; i++) {
@@ -103,6 +126,12 @@ class Calendar extends React.Component {
         return array;
     }
 
+    /**
+     * Print current months day or adjacent months day
+     * @param  {Object} day
+     * @param  {iterator} i
+     * @return {<Link> || <li>}
+     */
     printDay(item, i) {
         let dayData = this.getEntryData(item);
         if (item.edge) {
@@ -125,6 +154,11 @@ class Calendar extends React.Component {
         }
     }
 
+    /**
+     * Set Object key value pairs to use 
+     * @param  {Object}
+     * @return {Array of <div>'s'}
+     */
     printEntryData(item) {
         let array = [];
         if (item) {
@@ -135,6 +169,10 @@ class Calendar extends React.Component {
         return array;
     }
 
+    /**
+     * @param  {Object} item
+     * @return {Object || null} current days object
+     */
     getEntryData(item) {
         var calendar = this.props.calendarObject,
             year = item.date.getFullYear(),
@@ -147,14 +185,10 @@ class Calendar extends React.Component {
         return null;
     }
 
-    printDetails(entry) {
-        if (entry) {
-            entry.map((item) => {
-                return <div>item.name</div>
-            })
-        }
-    }
-
+    /**
+     * Save current clicked day and submit form
+     * @param  {Date}
+     */
     updateCalendar(date) {
         this.setState({
             date: date
@@ -162,6 +196,10 @@ class Calendar extends React.Component {
         this.props.submitForm('hourForm')
     }
 
+    /**
+     * When form is submitted succesfully add entry to calendar
+     * @param  {Object} containing description and hours
+     */
     submit(value) {
         this.props.setCalendarObject(
             Object.assign({}, this.props.calendarObject),
@@ -176,8 +214,8 @@ class Calendar extends React.Component {
         return (
             <div className="month"> 
                 <div>
-                    <Link className="prev-arrow" style={{textDecoration: 'none'}} to={this.setCalendar(this.prev())}>&#10094;</Link>
-                    <Link className="next-arrow" style={{textDecoration: 'none'}} to={this.setCalendar(this.next())}>&#10095;</Link>
+                    <Link className="prev-arrow" to={this.setCalendar(this.prev())}>&#10094;</Link>
+                    <Link className="next-arrow" to={this.setCalendar(this.next())}>&#10095;</Link>
                     <h1>{this.printCalendarTime()}</h1>
                 </div>
 
